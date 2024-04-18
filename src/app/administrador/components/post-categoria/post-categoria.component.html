@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Agregar Categoria</h2>
+  <form [formGroup]="categoriaForm" (ngSubmit)="agregarCategoria()">
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Nombre</mat-label>
+      <input matInput type="text" placeholder="Nombre" formControlName="nombre" />
+      <mat-error *ngIf="categoriaForm.get('nombre')?.hasError('required')">Este campo es obligatorio!</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Agregar</button>
+  </form>
+</div>

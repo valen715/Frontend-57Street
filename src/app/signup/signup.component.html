@@ -1,0 +1,84 @@
+<div class="container">
+  <mat-card>
+    <mat-card-title>Registro</mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="signupForm">
+        
+        <mat-form-field appearance="outline">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="nombres" placeholder="Nombres" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Primer Apellido</mat-label>
+          <input matInput formControlName="primerApellido" placeholder="Primer Apellido" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Segundo Apellido</mat-label>
+          <input matInput formControlName="segundoApellido" placeholder="Segundo Apellido">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="Email" required>
+
+          <mat-error *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched">
+            Por favor ingrese un email valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Celular</mat-label>
+          <input matInput formControlName="celular" placeholder="Celular" required>
+
+          <mat-error *ngIf="signupForm.get('celular').invalid && signupForm.get('celular').touched">
+            Por favor ingrese un numero telefonico valido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Direccion</mat-label>
+          <input matInput formControlName="direccion" placeholder="Direccion" required>
+
+          <mat-error *ngIf="signupForm.get('direccion').invalid && signupForm.get('direccion').touched">
+            Por favor ingrese una direccion valida.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Clave</mat-label>
+          <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="clave" placeholder="Clave" required>
+
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+
+          <mat-error *ngIf="signupForm.get('clave').invalid && signupForm.get('clave').touched">
+            Por favor ingrese una clave valida.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Confirmar Clave</mat-label>
+          <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="confirmarClave" placeholder="Clave" required>
+
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+
+          <mat-error *ngIf="signupForm.get('confirmarClave').invalid && signupForm.get('confirmarClave').touched">
+            Por favor ingrese la clave que coincida.
+          </mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid"
+        (click)="onSubmit()">Registrar</button>
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
