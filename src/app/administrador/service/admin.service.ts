@@ -20,7 +20,7 @@ export class AdminService {
 
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(
-      'Authorization', 'Portador' + UserStorageService.getToken()
+      'Authorization', 'Bearer ' + UserStorageService.getToken()
     )
   }
 }
